@@ -51,7 +51,7 @@ app.patch('/fubar', (req, res) => {
 //DELETE /fubar/:fu_id - Delete a specific fubar
 app.delete('/fubar/:fu_id', (req, res) => {
     const fu_id = req.params.fu_id;
-    const index = fubar.findIndex(f => f.fu_id === fu_id);
+    const index = fubars.findIndex(f => f.fu_id === fu_id);
 
     if (index !== -1){
         fubars.splice(index, 1);
