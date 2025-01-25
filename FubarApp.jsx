@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// TODO: move this to foo-app react stuff
 
 class FubarApp extends Component {
   constructor(props) {
