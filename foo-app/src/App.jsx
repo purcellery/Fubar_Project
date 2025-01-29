@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// TODO: move this to foo-app react stuff
 
-class FubarApp extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -122,4 +121,4 @@ class FubarApp extends Component {
   }
 }
 
-export default FubarApp;
+export default App;
