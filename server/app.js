@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const pgp = require("pg-promise")();
+const db = pgp('postgresql://main_user:secret@localhost:5432/fubar_app')
 const port = 3000;
 
 //parsing Json bodies
@@ -11,14 +13,18 @@ app.use(cors());
 let fubars = [];
 
 // GET /fubar - Retrieve all fubars
-app.get('/fubar', (req, res) => {
+app.get('/fubar', async (req, res) => {
+
+    const fubars = await db.any('SELECT * FROM fubars LIMIT 10')
+    // TODO: REMOVE BELOW
     res.json(fubars);
 });
 
 //GET /fubar/:fu_id - Retrieve a specific fubar by fu_id
-app.get('/fubar/:fu_id', (req, res) => {
+app.get('/fubar/:fu_id', async (req, res) => {
+
     const fu_id = req.params.fu_id;
-    const fubar = fubars.find(f => f.fu_id === fu_id);
+    const fubar = await db.any('SELECT * FROM fubars WHERE fu_id = ($1) LIMIT 1', fu_id);
     if (fubar) {
         res.json(fubar);
     } else {

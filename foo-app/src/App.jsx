@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+//TODO: NEED TO MAKE IT SO WEBPAGE REFRESHES AFTER FUBAR CREATION
 class App extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +42,7 @@ class App extends Component {
     }
   };
 
+  // TODO: NEED TO FIX UPDATES FOR FRONTEND
   // Update an existing fubar
   updateFubar = async (fu_id) => {
     if (!this.state.updatedFubar) {
