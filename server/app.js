@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = 3000;
 
 //parsing Json bodies
 app.use(express.json());
+app.use(cors());
 
 // Sample in-memory storage for fubars
 let fubars = [];

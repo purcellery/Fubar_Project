@@ -15,13 +15,14 @@ class App extends Component {
 
   // Fetch all fubars from the server
   fetchFubars = async () => {
-    this.setState({ loading: true });
     try {
-      const response = await axios.get('http://localhost:3000/fubar');
-      this.setState({ fubars: response.data, loading: false });
+      const res = await axios.get('http://localhost:3000/fubar');
+      this.setState({fubars: res.data, loading: false})
+
     } catch (error) {
       this.setState({ error: 'Error fetching fubars', loading: false });
     }
+    
   };
 
   // Create a new fubar
@@ -67,10 +68,12 @@ class App extends Component {
   };
 
   componentDidMount() {
+    console.log("Test Trigger for ComponentDidMount");
     this.fetchFubars(); // Load fubars when the component mounts
   }
 
   render() {
+    console.log("Test Trigger for render");
     const { fubars, error, loading, newFubar, updatedFubar } = this.state;
 
     return (
